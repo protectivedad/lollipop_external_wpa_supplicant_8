@@ -3807,7 +3807,8 @@ int wpas_p2p_add_p2pdev_interface(struct wpa_supplicant *wpa_s)
 		iface.confname = wpa_s->conf_p2p_dev;
 		iface.ctrl_interface = NULL;
 	} else {
-		iface.confname = wpa_s->confname;
+		//iface.confname = wpa_s->confname;
+		iface.confname = "/data/misc/wifi/p2p_supplicant.conf";
 		iface.ctrl_interface = wpa_s->conf->ctrl_interface;
 	}
 	iface.conf_p2p_dev = NULL;
