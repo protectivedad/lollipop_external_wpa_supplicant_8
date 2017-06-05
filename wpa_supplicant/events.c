@@ -2077,6 +2077,9 @@ static int disconnect_reason_recoverable(u16 reason_code)
 		reason_code == WLAN_REASON_CLASS3_FRAME_FROM_NONASSOC_STA;
 }
 
+#ifdef WIFI_EAGLE
+extern u8 gl_var_bssid[ETH_ALEN];
+#endif
 
 static void wpa_supplicant_event_disassoc(struct wpa_supplicant *wpa_s,
 					  u16 reason_code,
@@ -2183,9 +2186,13 @@ static void wpa_supplicant_event_disassoc_finish(struct wpa_supplicant *wpa_s,
 			 */
 			fast_reconnect = wpa_s->current_bss;
 			fast_reconnect_ssid = wpa_s->current_ssid;
-		} else if (wpa_s->wpa_state >= WPA_ASSOCIATING)
+		} else if (wpa_s->wpa_state >= WPA_ASSOCIATING){
+#ifdef WIFI_EAGLE
+		/* ap_cache */
+		os_memcpy(gl_var_bssid, wpa_s->bssid, ETH_ALEN);
+#endif
 			wpa_supplicant_req_scan(wpa_s, 0, 100000);
-		else
+		}else
 			wpa_dbg(wpa_s, MSG_DEBUG, "Do not request new "
 				"immediate scan");
 	} else {

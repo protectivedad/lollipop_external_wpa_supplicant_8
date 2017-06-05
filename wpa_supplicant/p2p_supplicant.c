@@ -4132,6 +4132,9 @@ static void wpas_p2p_deinit_global(struct wpa_global *global)
 
 static int wpas_p2p_create_iface(struct wpa_supplicant *wpa_s)
 {
+#ifdef WIFI_EAGLE
+	return 0;
+#endif
 	if (!(wpa_s->drv_flags & WPA_DRIVER_FLAGS_DEDICATED_P2P_DEVICE) &&
 	    wpa_s->conf->p2p_no_group_iface)
 		return 0; /* separate interface disabled per configuration */

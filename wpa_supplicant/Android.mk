@@ -29,6 +29,7 @@ L_CFLAGS += -Wno-unused-parameter
 
 # Set Android extended P2P functionality
 L_CFLAGS += -DANDROID_P2P
+L_CFLAGS += -DWIFI_EAGLE
 ifeq ($(BOARD_WPA_SUPPLICANT_PRIVATE_LIB),)
 L_CFLAGS += -DANDROID_P2P_STUB
 endif
