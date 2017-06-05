@@ -306,7 +306,7 @@ int main(int argc, char *argv[])
 		goto out;
 	} else {
 		wpa_printf(MSG_INFO, "Successfully initialized "
-			   "wpa_supplicant" ": for broadcom wifi");
+			   "wpa_supplicant" ": for realtek wifi");
 	}
 
 	for (i = 0; exitcode == 0 && i < iface_count; i++) {
